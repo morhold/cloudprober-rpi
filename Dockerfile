@@ -6,5 +6,5 @@
 #                         cloudprober/cloudprober
 FROM busybox
 ADD cloudprober /cloudprober
-
+RUN chmod +x /cloudprober
 ENTRYPOINT ["/cloudprober", "--logtostderr"]
