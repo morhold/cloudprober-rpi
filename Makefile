@@ -1,3 +1,9 @@
+VERSION ?= $(shell git describe --tags)
+DOCKER_VERSION ?= $(VERSION)
+GIT_COMMIT = $(strip $(shell git rev-parse --short HEAD))
+GOBIN ?= ${GOPATH}/bin
+BINARY ?= cloudprober
+
 GOOS=linux GOARCH=arm GOARM=7 CGO_ENABLED=0 go build -o cloudprober -ldflags "-X main.version=v0.11.1-33-gc4dca15 -extldflags -static" ./cmd/cloudprober.go
 docker buildx  build \
   --push \
